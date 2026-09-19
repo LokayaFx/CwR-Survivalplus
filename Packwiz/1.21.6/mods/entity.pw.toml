@@ -1,0 +1,13 @@
+name = "Entity Minimap"
+filename = "ThreatScope-v1.0.0.jar"
+side = "client"
+
+[download]
+url = "https://cdn.modrinth.com/data/w9GPUYGn/versions/fxv0iuYI/ThreatScope-v1.0.0.jar"
+hash-format = "sha512"
+hash = "08ef8e679330cb34f0cbcaf8ce837b591e33728de7acd2c1322f0ba4ea701ce300c85f8d60c93144385b1f967bdea57d7a43b1b22be6a1bde97cd5d8960af8cc"
+
+[update]
+[update.modrinth]
+mod-id = "w9GPUYGn"
+version = "fxv0iuYI"

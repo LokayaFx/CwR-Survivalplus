@@ -1,0 +1,13 @@
+name = "InventoryBinds"
+filename = "InventoryBinds-3.0.1+1.21.8.jar"
+side = "client"
+
+[download]
+url = "https://cdn.modrinth.com/data/Yi2fIEtc/versions/UJ10mCDq/InventoryBinds-3.0.1%2B1.21.8.jar"
+hash-format = "sha512"
+hash = "af60e494e9ffefb6ef62ec02870ddf2f31a53480aec8bdae0d2aeb577b04df0525834d68cd88a994dd2d5bae641c3e30625dc003dd5ccf315d4d0fb10fc22643"
+
+[update]
+[update.modrinth]
+mod-id = "Yi2fIEtc"
+version = "UJ10mCDq"
