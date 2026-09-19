@@ -1,0 +1,13 @@
+name = "Freelook"
+filename = "freelook-1.2.8.jar"
+side = "client"
+
+[download]
+url = "https://cdn.modrinth.com/data/g4pR0Fmy/versions/elzgeThs/freelook-1.2.8.jar"
+hash-format = "sha512"
+hash = "7a8c49832f54dba87153804a4eab86475b51487db1b5c6e7ed7825565e0c81f4ddfd69b0296ca52c7cb176e49aadebc30dbcb1e7d347e281eb7e31da9d6c2b77"
+
+[update]
+[update.modrinth]
+mod-id = "g4pR0Fmy"
+version = "elzgeThs"

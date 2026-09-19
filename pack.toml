@@ -1,0 +1,13 @@
+name = "CwR Survivalplus"
+author = "Lokayaa"
+version = "1.2.1"
+pack-format = "packwiz:1.1.0"
+
+[index]
+file = "index.toml"
+hash-format = "sha256"
+hash = "eb8a442cb6434c5cbbcc64487a84a366fed17b6028a72a0f5a959d86d3cb3b3f"
+
+[versions]
+fabric = "0.19.5"
+minecraft = "1.21.11"

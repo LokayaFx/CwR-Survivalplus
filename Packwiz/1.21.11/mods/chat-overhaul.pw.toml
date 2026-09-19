@@ -1,0 +1,13 @@
+name = "Chat Overhaul !"
+filename = "chatoverhaul-fabric-1.21.11-0.9.0-beta.jar"
+side = "client"
+
+[download]
+url = "https://cdn.modrinth.com/data/Vy2VOukt/versions/iViZIDtq/chatoverhaul-fabric-1.21.11-0.9.0-beta.jar"
+hash-format = "sha512"
+hash = "88ce80013760c950578fe3afee6ff6ad59edc1aa3b9dcb6db5c6976336d69475c1500bf021c0d95b05d3fd2bd70ea5905a4c3023a057e2be7f7bfb8aeec1bf42"
+
+[update]
+[update.modrinth]
+mod-id = "Vy2VOukt"
+version = "iViZIDtq"
