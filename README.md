@@ -1,4 +1,4 @@
-(https://cdn.modrinth.com/data/cached_images/21e47b8f9d9393761cd08f6804098da37a56645f_0.webp)
+![Banner logo](/banner.png)
 
 # 🚀 CWR Survivalplus
 
