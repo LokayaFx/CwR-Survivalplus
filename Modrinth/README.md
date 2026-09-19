@@ -1,0 +1,1 @@
+Modrinth packs are generated with [packwiz](https://github.com/packwiz/packwiz) or [mmc-export](https://github.com/RozeFound/mmc-export) using the scripts from the CLI tools.

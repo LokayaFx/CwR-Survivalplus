@@ -1,0 +1,6 @@
+*.jar
+*.exe
+Packwiz/packwiz
+Packwiz/*/resourcepacks/*.zip
+.DS_Store
+.vscode

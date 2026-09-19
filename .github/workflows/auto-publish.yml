@@ -1,0 +1,92 @@
+name: Automatically publish to Modrinth and CurseForge
+on:
+  release:
+    types: [published]
+jobs:
+  publish-to-curseforge:
+    if: github.repository_owner == 'CwR-Survivalplus'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    environment: github-actions
+    permissions:
+      contents: write
+    steps:
+       - name: Download pack files
+         uses: robinraju/release-downloader@28fc21f50d76778e7023361aa1f863e717d3d56f # v1.13
+         id: download-files
+         with:
+           fileName: "*.zip"
+           latest: true
+           tarBall: false
+           zipBall: false
+           preRelease: true
+
+       - name: Publish to CurseForge
+         uses: Kira-NT/mc-publish@52307b03863581dec6b652b83e597aec02ebb075 # v3.3.1
+         with:
+           name: ${{ steps.download-files.outputs.tag_name }} for ${{ vars.MC_VERSION }}
+           curseforge-id: ${{ vars.CURSEFORGE_PROJECT_ID }}
+           curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
+           curseforge-files: '*.zip'
+           loaders: fabric
+           game-versions: ${{ vars.MC_VERSION }}
+
+  publish-to-modrinth:
+    if: github.repository_owner == 'CwR-Survivalplus'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    environment: github-actions
+    permissions:
+      attestations: write
+      artifact-metadata: write
+      contents: write
+      id-token: write
+    steps:
+       - name: Checkout Repository
+         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+         with:
+           persist-credentials: false
+       - name: Download packwiz
+         uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+         with:
+           name: "Linux 64-bit x86"
+           github-token: ${{ secrets.GH_PAT }}
+           repository: ${{ vars.PACKWIZ_REPO }}
+           run-id: ${{ vars.PACKWIZ_RUN_ID }}
+       - name: Export to packwiz
+         run: |
+           chmod +x ./packwiz
+           pushd Packwiz/${VARS_MC_VERSION}
+           ../../packwiz modrinth export -o ../../CwR-Survivalplus-${GITHUB_REF_NAME}.mrpack
+           popd
+         env:
+           VARS_MC_VERSION: ${{ vars.MC_VERSION }}
+       - name: Attest mrpack
+         id: attest-mrpack
+         uses: actions/attest-build-provenance@a2bbfa25375fe432b6a289bc6b6cd05ecd0c4c32 # v4.1.0
+         with:
+          subject-path: CwR-Survivalplus-${{ github.ref_name }}.mrpack
+       - name: Copy and zip attestation
+         run: |
+           cp ${STEPS_ATTEST_MRPACK_OUTPUTS_BUNDLE_PATH} cosign-bundle.json
+           zip cosign-bundle.zip cosign-bundle.json
+         env:
+           STEPS_ATTEST_MRPACK_OUTPUTS_BUNDLE_PATH: ${{ steps.attest-mrpack.outputs.bundle-path }}
+       - name: Publish to Modrinth
+         uses: Kira-NT/mc-publish@995edadc13559a8b28d0b7e6571229f067ec7659 # v3.3.0
+         with:
+           name: ${{ github.ref_name }} for ${{ vars.MC_VERSION }}
+           modrinth-id: ${{ vars.MODRINTH_PROJECT_ID }}
+           modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
+           modrinth-unfeature-mode: none
+           files: |
+             CwR-Survivalplus-${{ github.ref_name }}.mrpack
+             cosign-bundle.zip
+           loaders: fabric
+           game-versions: ${{ vars.MC_VERSION }}
+       - name: Upload to Github
+         uses: Shopify/upload-to-release@c77c9b3e5d288adaef98a7007bf92340ec6ce03b # v2.0.0
+         with:
+           name: CwR-Survivalplus-${{ github.ref_name }}.mrpack
+           path: CwR-Survivalplus-${{ github.ref_name }}.mrpack
+           repo-token: ${{ secrets.GITHUB_TOKEN }}

@@ -1,0 +1,19 @@
+{
+  "minecraft": {
+    "version": "1.21.11",
+    "modLoaders": [
+      {
+        "id": "fabric-0.16.0",
+        "primary": true
+      }
+    ]
+  },
+  "manifestType": "minecraftModpack",
+  "manifestVersion": 1,
+  "name": "CwR Survivalplus",
+  "version": "1.2.1",
+  "author": "CwR",
+  "overrides": "overrides",
+  "files": [],
+  "image": ""
+}

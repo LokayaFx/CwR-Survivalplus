@@ -1,0 +1,14 @@
+name = "CwR Survivalplus"
+author = "CwR"
+description = "A survival-focused modpack for Minecraft."
+
+# Override resources from Packwiz export
+[[Resource]]
+name = "Example Override"
+filename = "example-override.zip"
+action = "override"
+
+# Remove unwanted files
+[[File]]
+name = "unwanted-file.txt"
+action = "remove"

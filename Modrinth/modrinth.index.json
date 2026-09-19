@@ -1,0 +1,12 @@
+{
+  "formatVersion": 1,
+  "game": "minecraft",
+  "versionId": "1.21.11",
+  "name": "CwR Survivalplus",
+  "summary": "A survival-focused modpack for Minecraft.",
+  "dependencies": {
+    "minecraft": "1.21.11",
+    "fabric-loader": ">=0.16.0"
+  },
+  "files": []
+}
